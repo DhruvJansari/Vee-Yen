@@ -1,6 +1,7 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -13,9 +14,18 @@ export default function Footer() {
 
           {/* BRAND */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              VEE YEN <span className="text-[#ff5e14]">Traders</span>
-            </h2>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/images/logo1.png"
+                alt="Vee Yen Traders Logo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+              <h2 className="text-2xl font-bold text-white">
+                VEE YEN TRADERS
+              </h2>
+            </div>
 
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
               Transforming industrial scrap into sustainable value with
@@ -26,7 +36,7 @@ export default function Footer() {
               {["f", "t", "in", "ig"].map((item, i) => (
                 <div
                   key={i}
-                  className="w-9 h-9 rounded-full bg-[#1c1c1c] 
+                  className="w-9 h-9 rounded-full bg-[#1c1c1c]
                              flex items-center justify-center
                              hover:bg-[#ff5e14] transition cursor-pointer"
                 >
@@ -61,7 +71,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* LATEST BLOG / INFO */}
+          {/* LATEST UPDATES */}
           <div>
             <h4 className="text-white font-semibold mb-3">
               Latest Updates
@@ -89,34 +99,54 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* NEWSLETTER */}
+          {/* CONTACT US */}
           <div>
             <h4 className="text-white font-semibold mb-3">
-              Newsletter
+              Contact Us
             </h4>
             <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
 
-            <p className="text-sm text-gray-400 mb-5">
-              Register now to get latest updates on promotions & scrap pricing.
-            </p>
+            <div className="space-y-4 text-sm text-gray-400">
 
-            <div className="flex flex-col gap-3">
-              <input
-                type="email"
-                placeholder="Enter E-mail"
-                className="px-4 py-3 bg-[#1c1c1c] text-sm
-                           outline-none border border-[#2a2a2a]
-                           focus:border-[#ff5e14]"
-              />
+              {/* Address */}
+              <div className="flex items-start gap-3">
+                <MapPin size={16} className="text-[#ff5e14] mt-1" />
+                <div>
+                  <p className="text-white font-medium">Address</p>
+                  <p>
+                    Plot No. 21, Industrial Area,<br />
+                    Ahmedabad, Gujarat, India
+                  </p>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-[#ff5e14]" />
+                <div>
+                  <p className="text-white font-medium">Phone</p>
+                  <p>+91 98765 43210</p>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3">
+                <Mail size={16} className="text-[#ff5e14]" />
+                <div>
+                  <p className="text-white font-medium">Email</p>
+                  <p>contact@veeyentraders.com</p>
+                </div>
+              </div>
 
               <button
-                className="flex items-center justify-center gap-2
-                           bg-[#ff5e14] text-white py-3
+                className="mt-4 inline-flex items-center justify-center
+                           bg-[#ff5e14] text-white px-5 py-3
                            text-sm font-semibold
                            hover:bg-orange-600 transition"
               >
-                SUBSCRIBE <Mail size={16} />
+                Contact Now
               </button>
+
             </div>
           </div>
 

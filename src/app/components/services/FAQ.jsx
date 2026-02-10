@@ -21,81 +21,69 @@ export default function FAQ() {
     },
   ];
 
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(null);
 
   return (
     <section className="bg-gray-50 py-16 sm:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
-        {/* Header */}
-        <div className="max-w-3xl mb-14">
-          <p className="text-[#ff5e14] uppercase text-sm font-semibold mb-3">
-            FAQ
-          </p>
+       {/* Header */}
+<div className="text-center mb-14">
+  <div className="flex items-center justify-center gap-3 mb-4">
+    <span className="w-10 h-[2px] bg-[#ff5e14]" />
+    <p className="text-[#ff5e14] uppercase text-sm font-semibold">
+      FAQ
+    </p>
+    <span className="w-10 h-[2px] bg-[#ff5e14]" />
+  </div>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
-            Frequently Asked{" "}
-            <span className="text-[#ff5e14]">Questions</span>
-          </h2>
+  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+    Frequently Asked{" "}
+    <span className="text-[#ff5e14]">Questions</span>
+  </h2>
 
-          <p className="text-gray-600 leading-relaxed">
-            Quick answers to common questions about our scrap management and
-            recycling services.
-          </p>
-        </div>
-
-        {/* FAQ Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-          {/* Questions */}
-          <div className="space-y-3">
-            {faqs.map((item, i) => (
+  <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+    Quick answers to common questions about our scrap management and
+    recycling services.
+  </p>
+</div>  
+        {/* FAQ Accordion */}
+        <div className="space-y-4">
+          {faqs.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white border border-gray-200 rounded-xl overflow-hidden"
+            >
+              {/* Question */}
               <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`
-                  w-full text-left px-6 py-5 rounded-lg
-                  border transition-all duration-300
-                  ${
-                    active === i
-                      ? "bg-white border-[#ff5e14] shadow-md"
-                      : "bg-gray-100 border-gray-200 hover:bg-white"
-                  }
-                `}
+                onClick={() => setActive(active === i ? null : i)}
+                className="w-full flex items-center justify-between
+                           px-6 py-5 text-left
+                           hover:bg-gray-50 transition"
               >
-                <div className="flex items-center justify-between">
-                  <span
-                    className={`font-semibold ${
-                      active === i
-                        ? "text-[#ff5e14]"
-                        : "text-gray-800"
-                    }`}
-                  >
-                    {item.q}
-                  </span>
+                <span className="font-semibold text-gray-800">
+                  {item.q}
+                </span>
 
-                  <span
-                    className={`text-xl font-bold transition ${
-                      active === i
-                        ? "text-[#ff5e14]"
-                        : "text-gray-400"
-                    }`}
-                  >
-                    →
-                  </span>
-                </div>
+                <span
+                  className={`text-2xl font-bold transition-transform duration-300
+                    ${active === i ? "rotate-45 text-[#ff5e14]" : "text-gray-400"}
+                  `}
+                >
+                  +
+                </span>
               </button>
-            ))}
-          </div>
 
-          {/* Answer Panel */}
-          <div className="bg-white rounded-xl shadow-sm p-8 flex items-center">
-            <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-              {faqs[active].a}
-            </p>
-          </div>
-
+              {/* Answer */}
+              {active === i && (
+                <div className="px-6 pb-6 text-gray-600 text-sm sm:text-base leading-relaxed">
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

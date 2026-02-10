@@ -35,10 +35,14 @@ export default function Serviceslist() {
     },
   ];
 
-  const [index, setIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(3);
+  /* duplicate data for infinite illusion */
+  const sliderData = [...services, ...services, ...services];
 
-  // 🔹 Responsive cards count
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [index, setIndex] = useState(services.length);
+  const [animate, setAnimate] = useState(true);
+
+  /* 🔹 Responsive cards */
   useEffect(() => {
     const updateCards = () => {
       if (window.innerWidth < 640) setVisibleCards(1);
@@ -51,18 +55,36 @@ export default function Serviceslist() {
     return () => window.removeEventListener("resize", updateCards);
   }, []);
 
-  const maxIndex = services.length - visibleCards;
+  const total = services.length;
 
-  // 🔹 Autoplay
+  /* 🔹 Autoplay */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [maxIndex]);
+    const id = setInterval(() => {
+      setIndex((i) => i + 1);
+    }, 3000);
+    return () => clearInterval(id);
+  }, []);
 
-  const prev = () => setIndex(index === 0 ? maxIndex : index - 1);
-  const next = () => setIndex(index >= maxIndex ? 0 : index + 1);
+  /* 🔹 Seamless wrapping (NO JUMP) */
+  useEffect(() => {
+    if (index >= total * 2) {
+      setTimeout(() => {
+        setAnimate(false);
+        setIndex(total);
+      }, 900);
+    } else if (index < total) {
+      setTimeout(() => {
+        setAnimate(false);
+        setIndex(total + (index % total));
+      }, 0);
+    } else {
+      setAnimate(true);
+    }
+  }, [index, total]);
+
+  /* 🔹 Arrow handlers */
+  const next = () => setIndex((i) => i + 1);
+  const prev = () => setIndex((i) => i - 1);
 
   return (
     <section className="bg-gray-50 py-20 relative">
@@ -83,29 +105,28 @@ export default function Serviceslist() {
           </h2>
 
           <p className="text-gray-600 leading-relaxed">
-            We provide end-to-end industrial scrap and recycling solutions
-            designed to maximize value, ensure compliance, and support the
-            circular economy.
+            We provide end-to-end industrial scrap and recycling solutions.
           </p>
         </div>
 
         {/* Slider */}
         <div className="relative overflow-hidden">
 
-          {/* Arrows */}
+          {/* Left Arrow */}
           <button
             onClick={prev}
-            className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 z-10
-                       w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-gray-700 shadow
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10
+                       w-10 h-10 rounded-full bg-white shadow
                        hover:bg-[#ff5e14] hover:text-white transition"
           >
             ❮
           </button>
 
+          {/* Right Arrow */}
           <button
             onClick={next}
-            className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 z-10
-                       w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-gray-700 shadow
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10
+                       w-10 h-10 rounded-full bg-white shadow
                        hover:bg-[#ff5e14] hover:text-white transition"
           >
             ❯
@@ -113,53 +134,43 @@ export default function Serviceslist() {
 
           {/* Track */}
           <div
-            className="flex gap-6 transition-transform duration-700 ease-in-out"
+            className={`flex gap-6 ${
+              animate ? "transition-transform duration-[900ms] ease-linear" : ""
+            }`}
             style={{
               transform: `translateX(-${index * (100 / visibleCards)}%)`,
             }}
           >
-            {services.map((service, i) => (
+            {sliderData.map((service, i) => (
               <div
                 key={i}
                 className="flex"
                 style={{ minWidth: `${100 / visibleCards}%` }}
               >
-                {/* Card */}
                 <div className="relative bg-white shadow-sm hover:shadow-xl
                                 transition-all duration-500 group
                                 flex flex-col w-full overflow-hidden">
 
-                  {/* Animated Color Strip */}
-                  <div className="absolute inset-x-0 top-0 h-1
-                                  bg-gradient-to-r from-[#ff5e14] via-orange-400 to-[#ff5e14]
-                                  scale-x-0 group-hover:scale-x-100
-                                  transition-transform duration-700 origin-left" />
+                  <div className="absolute inset-x-0 top-0 h-1 bg-[#ff5e14]" />
 
-                  {/* Content */}
-                  <div className="p-6 flex-grow transition-colors duration-300
-                                  group-hover:bg-[#ff5e14]/5">
-                    <h3 className="text-lg font-bold mb-3
-                                   group-hover:text-[#ff5e14] transition-colors">
+                  <div className="p-6 flex-grow group-hover:bg-[#ff5e14]/5 transition">
+                    <h3 className="text-lg font-bold mb-3 group-hover:text-[#ff5e14]">
                       {service.title}
                     </h3>
-
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {service.desc}
                     </p>
                   </div>
 
-                  {/* Image */}
-                  <div className="h-52 sm:h-56 overflow-hidden">
+                  <div className="h-52 overflow-hidden">
                     <img
                       src={service.img}
                       alt={service.title}
                       className="w-full h-full object-cover
-                                 transform group-hover:scale-110
-                                 transition duration-700"
+                                 group-hover:scale-110 transition duration-700"
                     />
                   </div>
 
-                  {/* Bottom Accent */}
                   <div className="h-[4px] bg-[#ff5e14]" />
                 </div>
               </div>
