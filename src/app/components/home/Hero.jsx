@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/bg-1.webp')" }}
+          style={{ backgroundImage: "url('/images/Home.jpeg')" }}
         >
           <div className="absolute inset-0 bg-black/60 md:bg-black/40"></div>
         </div>
@@ -47,8 +47,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-gray-300 text-base md:text-lg mb-10 max-w-2xl leading-relaxed border-l-4 border-[#ff5e14] pl-6"
           >
-            VEE YEN Traders delivers end-to-end metal recycling and scrap management solutions
-            that are reliable, transparent, and purpose-built for the circular economy.
+            VEE YEN Traders delivers end-to-end metal recycling and scrap
+            management solutions that are reliable, transparent, and
+            purpose-built for the circular economy.
           </motion.p>
 
           <motion.div
@@ -61,16 +62,20 @@ export default function Hero() {
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.15,
-                  delayChildren: 0.5
-                }
-              }
+                  delayChildren: 0.5,
+                },
+              },
             }}
             className="flex flex-wrap gap-4"
           >
             <motion.a
               variants={{
                 hidden: { opacity: 0, x: -20 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { duration: 0.5, ease: "easeOut" },
+                },
               }}
               whileHover={{
                 scale: 1.03,
@@ -78,14 +83,18 @@ export default function Hero() {
                 color: "#000000",
               }}
               whileTap={{ scale: 0.98 }}
-              href="#contact"
+              href="contact"
               className="bg-[#ff5e14] text-white px-8 py-4 text-sm font-black uppercase tracking-widest flex items-center gap-3 transition-colors duration-300 group shadow-[0_10px_20px_rgba(255,94,20,0.3)]"
             >
               Start a Partnership
               <motion.span
                 className="text-xl"
                 animate={{ x: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "easeInOut",
+                }}
               >
                 ↗
               </motion.span>

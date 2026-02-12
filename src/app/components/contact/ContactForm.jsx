@@ -6,7 +6,6 @@ export default function ContactForm() {
   return (
     <section className="bg-gray-100 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,53 +32,40 @@ export default function ContactForm() {
 
           {/* Form */}
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
             <input
               type="text"
               placeholder="Name"
-              className="bg-white px-5 py-4 text-sm outline-none
-                         placeholder-gray-500
-                         focus:ring-2 focus:ring-[#ff5e14]"
+              className="bg-white px-5 py-4 text-sm outline-none placeholder-gray-500 focus:ring-2 focus:ring-[#ff5e14]"
             />
 
             <input
               type="email"
               placeholder="Email Address"
-              className="bg-white px-5 py-4 text-sm outline-none
-                         placeholder-gray-500
-                         focus:ring-2 focus:ring-[#ff5e14]"
+              className="bg-white px-5 py-4 text-sm outline-none placeholder-gray-500 focus:ring-2 focus:ring-[#ff5e14]"
             />
 
             <input
               type="text"
               placeholder="Subject"
-              className="md:col-span-2 bg-white px-5 py-4 text-sm outline-none
-                         placeholder-gray-500
-                         focus:ring-2 focus:ring-[#ff5e14]"
+              className="md:col-span-2 bg-white px-5 py-4 text-sm outline-none placeholder-gray-500 focus:ring-2 focus:ring-[#ff5e14]"
             />
 
             <textarea
               rows="7"
               placeholder="Your Message"
-              className="md:col-span-2 bg-white px-5 py-4 text-sm outline-none
-                         placeholder-gray-500
-                         focus:ring-2 focus:ring-[#ff5e14]
-                         resize-none"
+              className="md:col-span-2 bg-white px-5 py-4 text-sm outline-none placeholder-gray-500 focus:ring-2 focus:ring-[#ff5e14] resize-none"
             />
 
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="bg-[#ff5e14] text-white px-10 py-4
-                           text-sm font-semibold hover:bg-orange-600 transition"
+                className="bg-[#ff5e14] text-white px-10 py-4 text-sm font-semibold hover:bg-orange-600 transition"
               >
                 Send Message
               </button>
             </div>
-
           </form>
         </motion.div>
-
       </div>
     </section>
   );

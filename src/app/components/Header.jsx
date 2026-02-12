@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaPhoneAlt, FaClock, FaEnvelope,
-  FaLinkedinIn, FaPinterestP, FaFacebookF, FaTwitter
+  FaPhoneAlt,
+  FaClock,
+  FaEnvelope,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaFacebookF,
+  FaTwitter,
 } from "react-icons/fa";
 
 export default function Header() {
@@ -29,9 +34,10 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 font-sans">
       {/* 2. MAIN NAVIGATION */}
-      <nav className={`w-full bg-white transition-all duration-400 ${scrolled ? "py-0 shadow-lg" : "py-0"}`}>
+      <nav
+        className={`w-full bg-white transition-all duration-400 ${scrolled ? "py-0 shadow-lg" : "py-0"}`}
+      >
         <div className="max-w-[1440px] mx-auto flex justify-between items-center h-[60px] md:h-[85px]">
-
           {/* Logo & Brand Block - ENLARGED LOGO AREA */}
           <div className="bg-[#ff5e14] h-full px-6 md:px-10 flex items-center">
             <Link href="/" className="flex items-center gap-4">
@@ -41,10 +47,13 @@ export default function Header() {
                 className={`object-contain transition-all duration-300 ${
                   /* Increased width values here */
                   scrolled ? "w-[40px] md:w-[50px]" : "w-[55px] md:w-[75px]"
-                  } h-auto`}
+                } h-auto`}
               />
-              <span className={`font-serif font-black text-white transition-all duration-300 uppercase tracking-tight ${scrolled ? "text-base md:text-xl" : "text-lg md:text-2xl"
-                }`}>
+              <span
+                className={`font-serif font-black text-white transition-all duration-300 uppercase tracking-tight ${
+                  scrolled ? "text-base md:text-xl" : "text-lg md:text-2xl"
+                }`}
+              >
                 VEE YEN TRADERS
               </span>
             </Link>
@@ -67,9 +76,12 @@ export default function Header() {
 
           {/* Right Action Button */}
           <div className="flex items-center h-full pr-4 md:pr-10">
-            <button className="hidden sm:flex bg-[#111111] text-white px-8 h-[50px] text-[12px] font-bold items-center gap-2 hover:bg-[#ff5e14] transition-all uppercase tracking-widest">
+            <a
+              href="/contact"
+              className="hidden sm:flex bg-[#111111] text-white px-8 h-[50px] text-[12px] font-bold items-center gap-2 hover:bg-[#ff5e14] transition-all uppercase tracking-widest"
+            >
               Get Started Now <span className="text-lg">↗</span>
-            </button>
+            </a>
 
             <button
               className="lg:hidden text-2xl text-black ml-4 p-2"

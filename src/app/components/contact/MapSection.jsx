@@ -6,7 +6,6 @@ export default function MapSection() {
   return (
     <section className="bg-gray-100 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,14 +36,7 @@ export default function MapSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="
-            w-full
-            h-[350px] sm:h-[420px] md:h-[500px]
-            overflow-hidden
-            rounded-xl
-            shadow-md
-            border border-gray-200
-          "
+          className="w-full h-[350px] sm:h-[420px] md:h-[500px] overflow-hidden rounded-xl shadow-md border border-gray-200"
         >
           <iframe
             title="VEE YEN Traders Location"
@@ -54,7 +46,6 @@ export default function MapSection() {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </motion.div>
-
       </div>
     </section>
   );

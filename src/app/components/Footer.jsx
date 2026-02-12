@@ -7,11 +7,9 @@ import { motion } from "framer-motion";
 export default function Footer() {
   return (
     <footer className="bg-[#111111] text-gray-300">
-
       {/* MAIN FOOTER */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-
           {/* BRAND */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -22,9 +20,7 @@ export default function Footer() {
                 height={48}
                 className="object-contain"
               />
-              <h2 className="text-2xl font-bold text-white">
-                VEE YEN TRADERS
-              </h2>
+              <h2 className="text-2xl font-bold text-white">VEE YEN TRADERS</h2>
             </div>
 
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
@@ -36,9 +32,7 @@ export default function Footer() {
               {["f", "t", "in", "ig"].map((item, i) => (
                 <div
                   key={i}
-                  className="w-9 h-9 rounded-full bg-[#1c1c1c]
-                             flex items-center justify-center
-                             hover:bg-[#ff5e14] transition cursor-pointer"
+                  className="w-9 h-9 rounded-full bg-[#1c1c1c] flex items-center justify-center hover:bg-[#ff5e14] transition cursor-pointer"
                 >
                   <span className="text-sm text-white">{item}</span>
                 </div>
@@ -48,9 +42,7 @@ export default function Footer() {
 
           {/* SERVICES */}
           <div>
-            <h4 className="text-white font-semibold mb-3">
-              Our Services
-            </h4>
+            <h4 className="text-white font-semibold mb-3">Our Services</h4>
             <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
 
             <ul className="space-y-3 text-sm">
@@ -73,9 +65,7 @@ export default function Footer() {
 
           {/* LATEST UPDATES */}
           <div>
-            <h4 className="text-white font-semibold mb-3">
-              Latest Updates
-            </h4>
+            <h4 className="text-white font-semibold mb-3">Latest Updates</h4>
             <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
 
             <div className="space-y-4 text-sm">
@@ -83,38 +73,32 @@ export default function Footer() {
                 <p className="text-white font-medium">
                   Scrap Recycling Trends 2024
                 </p>
-                <span className="text-xs text-gray-500">
-                  June 12, 2024
-                </span>
+                <span className="text-xs text-gray-500">June 12, 2024</span>
               </div>
 
               <div>
                 <p className="text-white font-medium">
                   How Circular Economy Works
                 </p>
-                <span className="text-xs text-gray-500">
-                  May 27, 2024
-                </span>
+                <span className="text-xs text-gray-500">May 27, 2024</span>
               </div>
             </div>
           </div>
 
           {/* CONTACT US */}
           <div>
-            <h4 className="text-white font-semibold mb-3">
-              Contact Us
-            </h4>
+            <h4 className="text-white font-semibold mb-3">Contact Us</h4>
             <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
 
             <div className="space-y-4 text-sm text-gray-400">
-
               {/* Address */}
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#ff5e14] mt-1" />
                 <div>
                   <p className="text-white font-medium">Address</p>
                   <p>
-                    Plot No. 21, Industrial Area,<br />
+                    Plot No. 21, Industrial Area,
+                    <br />
                     Ahmedabad, Gujarat, India
                   </p>
                 </div>
@@ -138,27 +122,20 @@ export default function Footer() {
                 </div>
               </div>
 
-              <button
-                className="mt-4 inline-flex items-center justify-center
-                           bg-[#ff5e14] text-white px-5 py-3
-                           text-sm font-semibold
-                           hover:bg-orange-600 transition"
+              <a
+                href="/contact"
+                className="mt-4 inline-flex items-center justify-center bg-[#ff5e14] text-white px-5 py-3 text-sm font-semibold hover:bg-orange-600 transition"
               >
                 Contact Now
-              </button>
-
+              </a>
             </div>
           </div>
-
         </div>
       </div>
 
       {/* BOTTOM BAR */}
       <div className="border-t border-[#1f1f1f]">
-        <div className="max-w-7xl mx-auto px-6 py-4
-                        flex flex-col md:flex-row
-                        items-center justify-between
-                        text-xs text-gray-500 gap-3">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-3">
           <p>
             © {new Date().getFullYear()} VEE YEN Traders. All Rights Reserved.
           </p>
@@ -167,13 +144,10 @@ export default function Footer() {
             <span className="hover:text-[#ff5e14] cursor-pointer">
               Privacy Policy
             </span>
-            <span className="hover:text-[#ff5e14] cursor-pointer">
-              FAQ’s
-            </span>
+            <span className="hover:text-[#ff5e14] cursor-pointer">FAQ’s</span>
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

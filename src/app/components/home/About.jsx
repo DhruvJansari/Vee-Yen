@@ -28,7 +28,6 @@ export default function About() {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col lg:flex-row gap-16 items-stretch">
-
           {/* LEFT SIDE – Background Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -37,7 +36,8 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 min-h-[400px] shadow-2xl relative overflow-hidden group"
             style={{
-              backgroundImage: "url('/images/bg-2.png')",
+              backgroundImage:
+                "url('https://media.baumpub.com/files/slides/locale_image/full/0203/50591_en_1e1ec_53284_scrapuni-sutter-worker-sorting-metal.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -114,7 +114,6 @@ export default function About() {
                 </motion.div>
               ))}
             </div>
-
           </div>
         </div>
       </div>

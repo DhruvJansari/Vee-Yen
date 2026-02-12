@@ -1,160 +1,163 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 
-export default function Serviceslist() {
-  const services = [
-    {
-      title: "Industrial Scrap Collection",
-      desc: "Scheduled and large-volume scrap pickup with reliable logistics.",
-      img: "https://images.unsplash.com/photo-1581093458791-9d42f7d0c4a6",
-    },
-    {
-      title: "Material Processing & Grading",
-      desc: "Expert sorting, dismantling, grading, and quality certification.",
-      img: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789",
-    },
-    {
-      title: "Bulk Supply to Industry",
-      desc: "Consistent supply of high-grade ferrous & non-ferrous metals.",
-      img: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
-    },
-    {
-      title: "Multi-Material Recycling",
-      desc: "Plastics, wood, iron, mixed scrap & e-waste solutions.",
-      img: "https://images.unsplash.com/photo-1590650046871-92c887180603",
-    },
-    {
-      title: "Compliance & Documentation",
-      desc: "Full chain-of-custody paperwork and regulatory support.",
-      img: "https://images.unsplash.com/photo-1587614203976-365c74645e83",
-    },
-    {
-      title: "Digital Tracking & Transparency",
-      desc: "Real-time updates on material status, weight, and value.",
-      img: "https://images.unsplash.com/photo-1556155092-8707de31f9c4",
-    },
-  ];
+const SERVICES = [
+  {
+    title: "Industrial Scrap Collection",
+    desc: "Scheduled and large-volume scrap pickup with reliable logistics. We ensure timely collection from factories, plants, and demolition sites with organized handling and transparent weighing processes.",
+    img: "https://int-enviroguard.com/pub/media/resized/885x349/ves/blog/Blog-ScrapMetalMgmt_HeaderImage.jpg",
+  },
+  {
+    title: "Material Processing & Grading",
+    desc: "Expert sorting, dismantling, grading, and quality certification. Our structured processing system maximizes material recovery while ensuring consistent quality standards for downstream industries.",
+    img: "https://cdn.theatlantic.com/media/mt/national/DSC06719.JPG",
+  },
+  {
+    title: "Bulk Supply to Industry",
+    desc: "Consistent supply of high-grade ferrous & non-ferrous metals. We maintain dependable inventory and streamlined distribution channels to support manufacturing and industrial demand.",
+    img: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Multi-Material Recycling",
+    desc: "Plastics, wood, iron, mixed scrap & e-waste solutions. Our integrated recycling approach helps businesses responsibly manage diverse waste streams under one reliable partner.",
+    img: "https://www.recyclingtoday.com/fileuploads/image/2024/09/24/stadleritalyweb.jpg",
+  },
+  {
+    title: "Compliance & Documentation",
+    desc: "Full chain-of-custody paperwork and regulatory support. We provide complete documentation, reporting, and compliance assistance to ensure transparency and audit readiness.",
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Digital Tracking & Transparency",
+    desc: "Real-time updates on material status, weight, and value. Our digital systems provide accurate tracking, reporting, and clear insights into every stage of the recycling process.",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+  },
+];
 
-  /* duplicate data for infinite illusion */
-  const sliderData = [...services, ...services, ...services];
-
+export default function ServicesList() {
   const [visibleCards, setVisibleCards] = useState(3);
-  const [index, setIndex] = useState(services.length);
-  const [animate, setAnimate] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(SERVICES.length);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
-  /* 🔹 Responsive cards */
+  const sliderData = useMemo(() => [...SERVICES, ...SERVICES, ...SERVICES], []);
+  const totalServices = SERVICES.length;
+
+  // Responsive card count
   useEffect(() => {
     const updateCards = () => {
-      if (window.innerWidth < 640) setVisibleCards(1);
-      else if (window.innerWidth < 1024) setVisibleCards(2);
-      else setVisibleCards(3);
+      const width = window.innerWidth;
+      setVisibleCards(width < 640 ? 1 : width < 1024 ? 2 : 3);
     };
 
     updateCards();
-    window.addEventListener("resize", updateCards);
-    return () => window.removeEventListener("resize", updateCards);
+    const handleResize = () => requestAnimationFrame(updateCards);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const total = services.length;
-
-  /* 🔹 Autoplay */
+  // Infinite scroll logic
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => i + 1);
-    }, 3000);
-    return () => clearInterval(id);
-  }, []);
-
-  /* 🔹 Seamless wrapping (NO JUMP) */
-  useEffect(() => {
-    if (index >= total * 2) {
-      setTimeout(() => {
-        setAnimate(false);
-        setIndex(total);
-      }, 900);
-    } else if (index < total) {
-      setTimeout(() => {
-        setAnimate(false);
-        setIndex(total + (index % total));
-      }, 0);
-    } else {
-      setAnimate(true);
+    if (currentIndex >= totalServices * 2) {
+      setIsTransitioning(false);
+      requestAnimationFrame(() => {
+        setCurrentIndex(totalServices);
+        requestAnimationFrame(() => setIsTransitioning(true));
+      });
+    } else if (currentIndex < totalServices) {
+      setIsTransitioning(false);
+      requestAnimationFrame(() => {
+        setCurrentIndex(totalServices + (currentIndex % totalServices));
+        requestAnimationFrame(() => setIsTransitioning(true));
+      });
     }
-  }, [index, total]);
+  }, [currentIndex, totalServices]);
 
-  /* 🔹 Arrow handlers */
-  const next = () => setIndex((i) => i + 1);
-  const prev = () => setIndex((i) => i - 1);
+  // Auto-slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => prev - 1);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
+
+  const translateX = `-${currentIndex * (100 / visibleCards)}%`;
+  const transitionStyle = isTransitioning
+    ? "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)"
+    : "none";
 
   return (
-    <section className="bg-gray-50 py-20 relative">
+    <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
         {/* Header */}
         <div className="max-w-3xl mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-10 h-[2px] bg-[#ff5e14]" />
-            <p className="text-[#ff5e14] uppercase text-sm font-semibold">
+            <span className="w-10 h-0.5 bg-[#ff5e14]" />
+            <span className="text-[#ff5e14] uppercase text-sm font-semibold">
               What We Do
-            </p>
+            </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-700 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Comprehensive Scrap{" "}
             <span className="text-[#ff5e14]">Management Services</span>
           </h2>
 
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600">
             We provide end-to-end industrial scrap and recycling solutions.
           </p>
         </div>
 
         {/* Slider */}
         <div className="relative overflow-hidden">
-
-          {/* Left Arrow */}
+          {/* Navigation Buttons */}
           <button
-            onClick={prev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10
-                       w-10 h-10 rounded-full bg-white shadow
-                       hover:bg-[#ff5e14] hover:text-white transition"
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full text-black bg-white/90 backdrop-blur-sm shadow-lg hover:bg-[#ff5e14] hover:text-white transition-all duration-300 active:scale-95"
+            aria-label="Previous service"
           >
-            ❮
+            ←
           </button>
 
-          {/* Right Arrow */}
           <button
-            onClick={next}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10
-                       w-10 h-10 rounded-full bg-white shadow
-                       hover:bg-[#ff5e14] hover:text-white transition"
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full text-black bg-white/90 backdrop-blur-sm shadow-lg hover:bg-[#ff5e14] hover:text-white transition-all duration-300 active:scale-95"
+            aria-label="Next service"
           >
-            ❯
+            →
           </button>
 
-          {/* Track */}
+          {/* Slider Track */}
           <div
-            className={`flex gap-6 ${
-              animate ? "transition-transform duration-[900ms] ease-linear" : ""
-            }`}
+            className="flex gap-6"
             style={{
-              transform: `translateX(-${index * (100 / visibleCards)}%)`,
+              transform: `translateX(${translateX})`,
+              transition: transitionStyle,
             }}
           >
-            {sliderData.map((service, i) => (
+            {sliderData.map((service, index) => (
               <div
-                key={i}
-                className="flex"
-                style={{ minWidth: `${100 / visibleCards}%` }}
+                key={index}
+                className="flex-shrink-0"
+                style={{ width: `${100 / visibleCards}%` }}
               >
-                <div className="relative bg-white shadow-sm hover:shadow-xl
-                                transition-all duration-500 group
-                                flex flex-col w-full overflow-hidden">
+                <div className="relative bg-white shadow-md hover:shadow-2xl transition-all duration-500 group overflow-hidden rounded-lg flex flex-col h-full">
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff5e14] to-orange-400" />
 
-                  <div className="absolute inset-x-0 top-0 h-1 bg-[#ff5e14]" />
-
-                  <div className="p-6 flex-grow group-hover:bg-[#ff5e14]/5 transition">
-                    <h3 className="text-lg font-bold mb-3 group-hover:text-[#ff5e14]">
+                  {/* Content */}
+                  <div className="p-6 flex-grow transition-colors duration-300 group-hover:bg-orange-50/50">
+                    <h3
+                      className="text-lg font-bold mb-3 text-gray-800
+                                   group-hover:text-[#ff5e14] transition-colors"
+                    >
                       {service.title}
                     </h3>
                     <p className="text-sm text-gray-600 leading-relaxed">
@@ -162,21 +165,43 @@ export default function Serviceslist() {
                     </p>
                   </div>
 
-                  <div className="h-52 overflow-hidden">
+                  {/* Image */}
+                  <div className="relative h-56 min-h-[224px] overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                     <img
                       src={service.img}
                       alt={service.title}
-                      className="w-full h-full object-cover
-                                 group-hover:scale-110 transition duration-700"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80";
+                      }}
                     />
                   </div>
 
-                  <div className="h-[4px] bg-[#ff5e14]" />
+                  {/* Bottom accent line */}
+                  <div className="h-1 bg-gradient-to-r from-[#ff5e14] to-orange-400" />
                 </div>
               </div>
             ))}
           </div>
+        </div>
 
+        {/* Dots indicator */}
+        <div className="flex justify-center gap-2 mt-8">
+          {SERVICES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(SERVICES.length + idx)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                currentIndex % totalServices === idx
+                  ? "bg-[#ff5e14] w-6"
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to service ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

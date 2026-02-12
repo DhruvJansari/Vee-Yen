@@ -34,7 +34,6 @@ export default function ContactDetails() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -74,33 +73,13 @@ export default function ContactDetails() {
                   ease: "easeOut",
                 }}
                 whileHover={{ y: -8 }}
-                className="
-                  group
-                  bg-gray-100
-                  text-center
-                  px-6 py-10
-                  rounded-md
-                  transition-all duration-500
-                  hover:shadow-lg
-                "
+                className="group bg-gray-100 text-center px-6 py-10 rounded-md transition-all duration-500 hover:shadow-lg"
               >
                 {/* Icon */}
-                <div
-                  className="
-                    w-20 h-20 mx-auto mb-6
-                    flex items-center justify-center
-                    rounded-full bg-white
-                    transition-colors duration-500
-                    group-hover:bg-[#ff5e14]
-                  "
-                >
+                <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full bg-white transition-colors duration-500 group-hover:bg-[#ff5e14]">
                   <Icon
                     size={28}
-                    className="
-                      text-[#ff5e14]
-                      transition-colors duration-500
-                      group-hover:text-white
-                    "
+                    className="text-[#ff5e14] transition-colors duration-500 group-hover:text-white"
                   />
                 </div>
 
@@ -110,17 +89,12 @@ export default function ContactDetails() {
                 </h4>
 
                 {/* Details */}
-                <p className="text-sm text-gray-600 mb-1">
-                  {item.line1}
-                </p>
-                <p className="text-sm text-gray-600">
-                  {item.line2}
-                </p>
+                <p className="text-sm text-gray-600 mb-1">{item.line1}</p>
+                <p className="text-sm text-gray-600">{item.line2}</p>
               </motion.div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
