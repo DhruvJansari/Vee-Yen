@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 import {
   FaArrowRight,
   FaCog,
@@ -9,6 +11,33 @@ import {
   FaRecycle,
   FaTruck,
 } from "react-icons/fa";
+
+// Animated Counter Component
+function AnimatedCounter({ value, suffix = "" }) {
+  const ref = useRef(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 50,
+    stiffness: 100,
+  });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [isInView, motionValue, value]);
+
+  useEffect(() => {
+    springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = Math.floor(latest).toLocaleString() + suffix;
+      }
+    });
+  }, [springValue, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
 
 export default function KeyServices() {
   const services = [
@@ -44,6 +73,12 @@ export default function KeyServices() {
       icon: <FaRecycle className="text-3xl" />,
       number: "04",
     },
+  ];
+
+  const stats = [
+    { value: 200, suffix: "+", label: "Active Clients" },
+    { value: 50, suffix: "K+", label: "Tons Processed" },
+    { value: 15, suffix: "+", label: "Years Experience" },
   ];
 
   return (
@@ -199,26 +234,29 @@ export default function KeyServices() {
 
                   {/* CTA Arrow */}
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase text-gray-400 group-hover:text-[#ff5e14] transition-colors duration-300">
+                    <Link
+                      href="/services"
+                      className="text-xs font-bold uppercase text-gray-400 group-hover:text-[#ff5e14] transition-colors duration-300"
+                    >
                       Learn More
-                    </span>
-                    <motion.div
-                      whileHover={{ x: 5 }}
+                    </Link>
+                    <Link
+                      href="/contact"
                       className="w-10 h-10 flex items-center justify-center border-2 border-[#ff5e14] text-[#ff5e14] group-hover:bg-[#ff5e14] group-hover:text-white transition-all duration-300"
                     >
                       <FaArrowRight />
-                    </motion.div>
+                    </Link>
                   </div>
                 </div>
 
                 {/* Hover Effect Line */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#ff5e14] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#ff5e14] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
               </motion.div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom Stats or CTA */}
+        {/* Bottom Stats with Animated Counters */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,26 +265,21 @@ export default function KeyServices() {
           className="mt-20 text-center"
         >
           <div className="inline-flex items-center gap-8 bg-[#2a2a2a] px-10 py-6 border-l-4 border-[#ff5e14]">
-            <div>
-              <p className="text-3xl font-black text-white mb-1">200+</p>
-              <p className="text-xs uppercase tracking-widest text-gray-400">
-                Active Clients
-              </p>
-            </div>
-            <div className="w-[1px] h-12 bg-gray-600"></div>
-            <div>
-              <p className="text-3xl font-black text-white mb-1">50K+</p>
-              <p className="text-xs uppercase tracking-widest text-gray-400">
-                Tons Processed
-              </p>
-            </div>
-            <div className="w-[1px] h-12 bg-gray-600"></div>
-            <div>
-              <p className="text-3xl font-black text-white mb-1">15+</p>
-              <p className="text-xs uppercase tracking-widest text-gray-400">
-                Years Experience
-              </p>
-            </div>
+            {stats.map((stat, index) => (
+              <div key={index} className="flex items-center gap-8">
+                <div>
+                  <p className="text-3xl font-black text-white mb-1">
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-400">
+                    {stat.label}
+                  </p>
+                </div>
+                {index < stats.length - 1 && (
+                  <div className="w-[1px] h-12 bg-gray-600"></div>
+                )}
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

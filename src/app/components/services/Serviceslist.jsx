@@ -148,7 +148,7 @@ export default function ServicesList() {
                 className="flex-shrink-0"
                 style={{ width: `${100 / visibleCards}%` }}
               >
-                <div className="relative bg-white shadow-md hover:shadow-2xl transition-all duration-500 group overflow-hidden rounded-lg flex flex-col h-full">
+                <div className="relative bg-white shadow-md hover:shadow-2xl transition-all duration-500 group overflow-hidden flex flex-col h-full">
                   {/* Top accent line */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff5e14] to-orange-400" />
 

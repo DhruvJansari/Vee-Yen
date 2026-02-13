@@ -6,7 +6,6 @@ export default function CTASection() {
   return (
     <section className="bg-gray-100 py-16 sm:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
         {/* Animated Card */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -65,32 +64,35 @@ export default function CTASection() {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="relative z-10 w-full md:w-auto"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.a
+              href="/contact"
+              whileHover="hover"
+              whileTap={{ scale: 0.97 }}
               className="
-                w-full md:w-auto
-                flex items-center justify-center gap-2
-                bg-[#ff5e14] text-white
-                font-semibold
-                px-8 py-4
-                text-sm sm:text-base
-                rounded-md
-                shadow-md
-              "
+      w-full md:w-auto
+      inline-flex items-center justify-center gap-2
+      bg-[#ff5e14] text-white
+      font-semibold
+      px-8 py-4
+      text-sm sm:text-base
+      rounded-md
+      shadow-md
+      cursor-pointer
+    "
             >
-              Get a Quote
+              <span>Get a Quote</span>
+
               <motion.span
-                initial={{ x: 0 }}
-                whileHover={{ x: 6 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                variants={{
+                  hover: { x: 6 },
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 18 }}
               >
                 →
               </motion.span>
-            </motion.button>
+            </motion.a>
           </motion.div>
         </motion.div>
-
       </div>
     </section>
   );

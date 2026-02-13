@@ -7,9 +7,8 @@ export default function contact() {
   return (
     <>
       <Hero />
-        <ContactDetails />
-      <ContactForm/>
-    
+      <ContactDetails />
+      {/* <ContactForm/> */}
       <MapSection />
     </>
   );

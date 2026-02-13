@@ -12,9 +12,9 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/Home.jpeg')" }}
+          style={{ backgroundImage: "url('/images/banner2.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black/60 md:bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/30 md:bg-black/20"></div>
         </div>
       </div>
       <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-20">
