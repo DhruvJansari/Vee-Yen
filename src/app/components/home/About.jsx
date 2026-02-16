@@ -25,16 +25,16 @@ export default function About() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        <div className="flex flex-col lg:flex-row gap-16 items-stretch">
+    <section className="py-10 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 items-stretch">
           {/* LEFT SIDE – Background Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:w-1/2 min-h-[400px] shadow-2xl relative overflow-hidden group"
+            className="lg:w-1/2 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] lg:min-h-[400px] shadow-2xl relative overflow-hidden group rounded-lg"
             style={{
               backgroundImage:
                 "url('https://media.baumpub.com/files/slides/locale_image/full/0203/50591_en_1e1ec_53284_scrapuni-sutter-worker-sorting-metal.jpg')",
@@ -55,19 +55,19 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="h-[2px] w-10 bg-[#ff5e14]" />
-                <span className="text-[#ff5e14] uppercase tracking-widest text-sm font-bold">
+              <div className="flex items-center gap-3 mb-4 md:mb-6">
+                <span className="h-[2px] w-8 md:w-10 bg-[#ff5e14]" />
+                <span className="text-[#ff5e14] uppercase tracking-widest text-xs md:text-sm font-bold">
                   About Our Company
                 </span>
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-black text-[#111111] uppercase leading-tight mb-8">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#111111] uppercase leading-tight mb-4 md:mb-6 lg:mb-8">
                 Bringing Structure to the <br />
                 <span className="text-[#ff5e14]">Scrap Ecosystem</span>
               </h2>
 
-              <p className="text-gray-600 text-base leading-relaxed mb-10 font-medium">
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6 md:mb-8 lg:mb-10 font-medium">
                 VEE YEN Traders was built to bring structure, transparency, and
                 professionalism to the scrap ecosystem. We transform fragmented
                 waste streams into valuable resources through reliable
@@ -79,17 +79,17 @@ export default function About() {
                 href="/about"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-4 text-[#111111] font-black uppercase tracking-widest group w-fit"
+                className="inline-flex items-center gap-3 md:gap-4 text-[#111111] text-sm md:text-base font-black uppercase tracking-widest group w-fit"
               >
                 Read More
-                <span className="w-12 h-12 rounded-full bg-[#ff5e14] text-white flex items-center justify-center group-hover:bg-[#111111] transition-all duration-300 group-hover:scale-110">
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+                <span className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#ff5e14] text-white flex items-center justify-center group-hover:bg-[#111111] transition-all duration-300 group-hover:scale-110">
+                  <FaArrowRight className="text-sm md:text-base group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </motion.a>
             </motion.div>
 
             {/* HIGHLIGHTS – 3 CARDS SAME ROW */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mt-6 md:mt-10 lg:mt-14">
               {highlights.map((item, index) => (
                 <motion.div
                   key={index}
@@ -97,17 +97,19 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 }}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="flex flex-col gap-4 p-6 bg-white border-l-4 border-[#ff5e14] shadow-md hover:shadow-xl transition-all duration-300 rounded-r-lg group cursor-pointer"
+                  whileHover={{ y: -6 }}
+                  className="flex flex-col justify-between gap-3 md:gap-4 p-4 md:p-5 bg-white border-l-4 border-[#ff5e14] shadow-md hover:shadow-xl transition-all duration-300 rounded-r-lg group cursor-pointer h-full"
                 >
-                  <div className="shrink-0 transform group-hover:scale-110 transition-transform duration-300">
-                    {item.icon}
+                  <div className="shrink-0 flex items-start transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl md:text-3xl">{item.icon}</div>
                   </div>
-                  <div>
-                    <h3 className="text-base font-black uppercase mb-2 text-[#111111] group-hover:text-[#ff5e14] transition-colors duration-300">
+
+                  <div className="flex flex-col flex-grow overflow-hidden">
+                    <h3 className="text-xs sm:text-sm md:text-base font-black uppercase mb-2 text-[#111111] group-hover:text-[#ff5e14] transition-colors duration-300 break-words leading-tight">
                       {item.title}
                     </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+
+                    <p className="text-gray-500 text-[11px] sm:text-xs md:text-sm leading-relaxed break-words">
                       {item.description}
                     </p>
                   </div>

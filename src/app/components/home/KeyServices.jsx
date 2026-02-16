@@ -82,7 +82,7 @@ export default function KeyServices() {
   ];
 
   return (
-    <section className="py-24 bg-[#1b1b1b] relative overflow-hidden">
+    <section className="py-10 md:py-16 lg:py-20 bg-[#1b1b1b] relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
@@ -121,25 +121,25 @@ export default function KeyServices() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-10 lg:mb-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-[2px] w-12 bg-[#ff5e14]" />
-              <span className="text-[#ff5e14] uppercase tracking-widest text-xs font-bold">
+            <div className="flex items-center gap-3 mb-3 md:mb-4">
+              <span className="h-[2px] w-10 md:w-12 bg-[#ff5e14]" />
+              <span className="text-[#ff5e14] uppercase tracking-widest text-[10px] md:text-xs font-bold">
                 Our Expertise
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase leading-tight">
               Core <span className="text-[#ff5e14]">Services</span>
             </h2>
-            <p className="text-gray-400 text-sm mt-4 max-w-xl">
+            <p className="text-gray-400 text-xs md:text-sm mt-3 md:mt-4 max-w-xl">
               Comprehensive scrap management solutions designed to maximize
               value, minimize waste, and streamline your operations.
             </p>
@@ -153,17 +153,17 @@ export default function KeyServices() {
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-white hover:text-[#ff5e14] transition-all duration-300 mt-6 md:mt-0"
+            className="group flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-widest text-white hover:text-[#ff5e14] transition-all duration-300 mt-4 md:mt-0"
           >
             View All Services
-            <span className="w-11 h-11 border-2 border-white group-hover:border-[#ff5e14] group-hover:bg-[#ff5e14] rounded-full flex items-center justify-center transition-all duration-300">
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+            <span className="w-9 h-9 md:w-11 md:h-11 border-2 border-white group-hover:border-[#ff5e14] group-hover:bg-[#ff5e14] rounded-full flex items-center justify-center transition-all duration-300">
+              <FaArrowRight className="text-sm md:text-base group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </motion.a>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {services.map((item, index) => (
             <motion.div
               key={index}
@@ -171,7 +171,7 @@ export default function KeyServices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative"
+              className="group relative flex"
             >
               {/* Service Number Badge */}
               <motion.div
@@ -179,7 +179,7 @@ export default function KeyServices() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                className="absolute -top-4 -right-4 z-20 w-14 h-14 bg-[#ff5e14] text-white flex items-center justify-center font-black text-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
+                className="absolute -top-3 -right-3 md:-top-4 md:-right-4 z-20 w-12 h-12 md:w-14 md:h-14 bg-[#ff5e14] text-white flex items-center justify-center font-black text-lg md:text-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
               >
                 {item.number}
               </motion.div>
@@ -188,10 +188,10 @@ export default function KeyServices() {
               <motion.div
                 whileHover={{ y: -12 }}
                 transition={{ duration: 0.3 }}
-                className="relative h-full"
+                className="relative h-full w-full flex flex-col"
               >
                 {/* Image Container */}
-                <div className="bg-[#2a2a2a] p-5 relative overflow-hidden">
+                <div className="bg-[#2a2a2a] p-2 md:p-3 relative overflow-hidden">
                   {/* Overlay with Icon */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
                     <motion.div
@@ -211,7 +211,7 @@ export default function KeyServices() {
                       alt={item.title}
                       width={500}
                       height={350}
-                      className="h-[240px] w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="h-[140px] sm:h-[150px] md:h-[160px] lg:h-[170px] w-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
 
                     {/* Gradient Overlay on Image */}
@@ -220,37 +220,34 @@ export default function KeyServices() {
                 </div>
 
                 {/* Content Card */}
-                <div className="bg-white px-7 py-8 shadow-xl -mt-14 mx-5 relative z-10 group-hover:shadow-2xl transition-shadow duration-300">
+                <div className="bg-white px-4 py-4 md:px-5 md:py-5 shadow-xl -mt-8 md:-mt-10 mx-3 md:mx-4 relative z-10 group-hover:shadow-2xl transition-shadow duration-300 flex-grow flex flex-col">
                   {/* Decorative Top Border */}
                   <div className="absolute top-0 left-0 w-0 h-1 bg-[#ff5e14] group-hover:w-full transition-all duration-500"></div>
 
-                  <h3 className="text-base font-black uppercase text-[#111] mb-4 min-h-[48px] group-hover:text-[#ff5e14] transition-colors duration-300 leading-tight">
+                  <h3 className="text-sm md:text-base font-black uppercase text-[#111] mb-2 md:mb-3 group-hover:text-[#ff5e14] transition-colors duration-300 leading-tight">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed mb-3 md:mb-4 flex-grow">
                     {item.desc}
                   </p>
 
                   {/* CTA Arrow */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-auto">
                     <Link
                       href="/services"
-                      className="text-xs font-bold uppercase text-gray-400 group-hover:text-[#ff5e14] transition-colors duration-300"
+                      className="text-[10px] md:text-xs font-bold uppercase text-gray-400 group-hover:text-[#ff5e14] transition-colors duration-300"
                     >
                       Learn More
                     </Link>
                     <Link
                       href="/contact"
-                      className="w-10 h-10 flex items-center justify-center border-2 border-[#ff5e14] text-[#ff5e14] group-hover:bg-[#ff5e14] group-hover:text-white transition-all duration-300"
+                      className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center border-2 border-[#ff5e14] text-[#ff5e14] group-hover:bg-[#ff5e14] group-hover:text-white transition-all duration-300"
                     >
-                      <FaArrowRight />
+                      <FaArrowRight className="text-xs md:text-sm" />
                     </Link>
                   </div>
                 </div>
-
-                {/* Hover Effect Line */}
-                {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#ff5e14] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
               </motion.div>
             </motion.div>
           ))}
@@ -262,21 +259,38 @@ export default function KeyServices() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 text-center"
+          className="mt-6 md:mt-12 lg:mt-16 text-center px-4"
         >
-          <div className="inline-flex items-center gap-8 bg-[#2a2a2a] px-10 py-6 border-l-4 border-[#ff5e14]">
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center 
+                  bg-[#2a2a2a] 
+                  px-6 py-6 sm:px-8 sm:py-6 md:px-10 
+                  border-l-4 border-[#ff5e14] 
+                  gap-6 sm:gap-8"
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="flex items-center gap-8">
-                <div>
-                  <p className="text-3xl font-black text-white mb-1">
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 w-full sm:w-auto"
+              >
+                <div className="text-center">
+                  <p className="text-2xl sm:text-3xl font-black text-white mb-1">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </p>
-                  <p className="text-xs uppercase tracking-widest text-gray-400">
+                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-400">
                     {stat.label}
                   </p>
                 </div>
+
+                {/* Divider */}
                 {index < stats.length - 1 && (
-                  <div className="w-[1px] h-12 bg-gray-600"></div>
+                  <>
+                    {/* Horizontal divider (mobile) */}
+                    <div className="block sm:hidden w-full h-[1px] bg-gray-600"></div>
+
+                    {/* Vertical divider (desktop) */}
+                    <div className="hidden sm:block w-[1px] h-12 bg-gray-600"></div>
+                  </>
                 )}
               </div>
             ))}

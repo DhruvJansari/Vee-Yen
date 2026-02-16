@@ -9,10 +9,10 @@ export default function Footer() {
     <footer className="bg-[#111111] text-gray-300">
       {/* MAIN FOOTER */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
           {/* BRAND */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
               <Image
                 src="/images/logo1.png"
                 alt="Vee Yen Traders Logo"
@@ -28,7 +28,7 @@ export default function Footer() {
               transparent processes and reliable recycling solutions.
             </p>
 
-            <div className="flex gap-3">
+            <div className="flex justify-center md:justify-start gap-3">
               {["f", "t", "in", "ig"].map((item, i) => (
                 <div
                   key={i}
@@ -43,7 +43,7 @@ export default function Footer() {
           {/* SERVICES */}
           <div>
             <h4 className="text-white font-semibold mb-3">Our Services</h4>
-            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
+            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6 mx-auto md:mx-0"></div>
 
             <ul className="space-y-3 text-sm">
               {[
@@ -66,7 +66,7 @@ export default function Footer() {
           {/* LATEST UPDATES */}
           <div>
             <h4 className="text-white font-semibold mb-3">Latest Updates</h4>
-            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
+            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6 mx-auto md:mx-0"></div>
 
             <div className="space-y-4 text-sm">
               <div>
@@ -88,11 +88,11 @@ export default function Footer() {
           {/* CONTACT US */}
           <div>
             <h4 className="text-white font-semibold mb-3">Contact Us</h4>
-            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6"></div>
+            <div className="w-10 h-[2px] bg-[#ff5e14] mb-6 mx-auto md:mx-0"></div>
 
             <div className="space-y-4 text-sm text-gray-400">
               {/* Address */}
-              <div className="flex items-start gap-3">
+              <div className="flex flex-col items-center md:flex-row md:items-start text-center md:text-left gap-3">
                 <MapPin size={16} className="text-[#ff5e14] mt-1" />
                 <div>
                   <p className="text-white font-medium">Address</p>
@@ -105,7 +105,7 @@ export default function Footer() {
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center md:flex-row md:items-center text-center md:text-left gap-3">
                 <Phone size={16} className="text-[#ff5e14]" />
                 <div>
                   <p className="text-white font-medium">Phone</p>
@@ -114,7 +114,7 @@ export default function Footer() {
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center md:flex-row md:items-center text-center md:text-left gap-3">
                 <Mail size={16} className="text-[#ff5e14]" />
                 <div>
                   <p className="text-white font-medium">Email</p>
@@ -124,7 +124,7 @@ export default function Footer() {
 
               <a
                 href="/contact"
-                className="mt-4 inline-flex items-center justify-center bg-[#ff5e14] text-white px-5 py-3 text-sm font-semibold hover:bg-orange-600 transition"
+                className="mt-4 inline-flex items-center justify-center mx-auto md:mx-0 bg-[#ff5e14] text-white px-5 py-3 text-sm font-semibold hover:bg-orange-600 transition"
               >
                 Contact Now
               </a>
@@ -135,12 +135,12 @@ export default function Footer() {
 
       {/* BOTTOM BAR */}
       <div className="border-t border-[#1f1f1f]">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-3">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-3 text-center md:text-left">
           <p>
             © {new Date().getFullYear()} VEE YEN Traders. All Rights Reserved.
           </p>
 
-          <div className="flex gap-6">
+          <div className="flex justify-center md:justify-start gap-6">
             <span className="hover:text-[#ff5e14] cursor-pointer">
               Privacy Policy
             </span>

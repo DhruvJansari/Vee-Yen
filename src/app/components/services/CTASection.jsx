@@ -12,16 +12,7 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="
-            relative bg-white border border-gray-200
-            rounded-xl
-            p-8 sm:p-10 md:p-12
-            flex flex-col md:flex-row
-            items-start md:items-center
-            justify-between
-            gap-8
-            shadow-sm
-          "
+          className="relative bg-white border border-gray-200 rounded-xl p-8 sm:p-10 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-sm"
         >
           {/* Soft Animated Glow */}
           <motion.div
@@ -40,8 +31,8 @@ export default function CTASection() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-700 mb-3"
             >
-              Ready to Get a{" "}
-              <span className="text-[#ff5e14]">Scrap Quote?</span>
+              Let’s Discuss Your{" "}
+              <span className="text-[#ff5e14]">Scrap Requirements</span>
             </motion.h2>
 
             <motion.p
@@ -51,8 +42,8 @@ export default function CTASection() {
               transition={{ delay: 0.35, duration: 0.6 }}
               className="text-gray-600 text-sm sm:text-base leading-relaxed"
             >
-              Get transparent pricing, reliable pickup, and complete
-              documentation from a trusted scrap management partner.
+              Contact us directly to get pricing details, schedule pickup, and
+              understand our scrap management process.
             </motion.p>
           </div>
 
@@ -68,19 +59,9 @@ export default function CTASection() {
               href="/contact"
               whileHover="hover"
               whileTap={{ scale: 0.97 }}
-              className="
-      w-full md:w-auto
-      inline-flex items-center justify-center gap-2
-      bg-[#ff5e14] text-white
-      font-semibold
-      px-8 py-4
-      text-sm sm:text-base
-      rounded-md
-      shadow-md
-      cursor-pointer
-    "
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-[#ff5e14] text-white font-semibold px-8 py-4 text-sm sm:text-base rounded-md shadow-md cursor-pointer"
             >
-              <span>Get a Quote</span>
+              <span>View Contact Details</span>
 
               <motion.span
                 variants={{
