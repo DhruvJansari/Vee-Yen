@@ -6,6 +6,13 @@ import Footer from "./components/Footer";
 // import Footer from "./components/Footer";
 import "./globals.css";
 
+
+export const metadata: Metadata = {
+  title: "Vee Yen Traders",
+  description: "Vee Yen Traders Official Website",
+  icons: "/logo.png"
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>

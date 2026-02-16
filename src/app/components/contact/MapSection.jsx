@@ -234,7 +234,7 @@ export default function MapSection() {
                 {/* Map Iframe */}
                 <iframe
                   title="VEE YEN Traders Recycling Yard Location"
-                  src="https://www.google.com/maps?q=VEE+YEN+Traders+Recycling+Yard&output=embed"
+                  src="https://www.google.com/maps?q=22.991840379016224,72.58082730429736&z=17&output=embed"
                   className="w-full h-[calc(100%-48px)] border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
