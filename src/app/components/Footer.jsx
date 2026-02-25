@@ -28,7 +28,7 @@ export default function Footer() {
               transparent processes and reliable recycling solutions.
             </p>
 
-            <div className="flex justify-center md:justify-start gap-3">
+            {/* <div className="flex justify-center md:justify-start gap-3">
               {["f", "t", "in", "ig"].map((item, i) => (
                 <div
                   key={i}
@@ -37,7 +37,7 @@ export default function Footer() {
                   <span className="text-sm text-white">{item}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* SERVICES */}
@@ -105,11 +105,17 @@ export default function Footer() {
               </div>
 
               {/* Phone */}
+              {/* Phone */}
               <div className="flex flex-col items-center md:flex-row md:items-center text-center md:text-left gap-3">
                 <Phone size={16} className="text-[#ff5e14]" />
                 <div>
                   <p className="text-white font-medium">Phone</p>
-                  <p>+91 98765 43210</p>
+                  <a
+                    href="tel:+919876543210"
+                    className="hover:text-[#ff5e14] transition"
+                  >
+                    +91 9876543210
+                  </a>
                 </div>
               </div>
 
@@ -118,7 +124,12 @@ export default function Footer() {
                 <Mail size={16} className="text-[#ff5e14]" />
                 <div>
                   <p className="text-white font-medium">Email</p>
-                  <p>contact@veeyentraders.com</p>
+                  <a
+                    href="mailto:contact@veeyentraders.com?subject=Scrap Inquiry&body=Hello Vee Yen Traders,"
+                    className="hover:text-[#ff5e14] transition"
+                  >
+                    contact@veeyentraders.com
+                  </a>
                 </div>
               </div>
 

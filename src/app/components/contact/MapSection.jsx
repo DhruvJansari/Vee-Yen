@@ -27,6 +27,8 @@ export default function MapSection() {
       icon: FaMapMarkerAlt,
       label: "Our Recycling Yard",
       value: "Plot No. 21, Industrial Area,\nAhmedabad, Gujarat, India",
+      link: "https://maps.app.goo.gl/NRNMXh7omSqCm3aSA",
+      external: true,
       color: "text-[#ff5e14]",
     },
     {
@@ -48,6 +50,7 @@ export default function MapSection() {
       label: "WhatsApp",
       value: "+91 98765 43210",
       link: "https://wa.me/919876543210",
+      external: true,
       color: "text-gray-700",
     },
     {
@@ -186,6 +189,9 @@ export default function MapSection() {
                     {item.link ? (
                       <a
                         href={item.link}
+                        aria-label={`Contact via ${item.label}`}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
                         className={`${item.color} font-bold text-sm sm:text-base hover:underline block break-words transition-colors duration-300 hover:text-[#ff5e14]`}
                       >
                         {item.value}
@@ -233,7 +239,7 @@ export default function MapSection() {
 
                 {/* Map Iframe */}
                 <iframe
-                  title="VEE YEN Traders Recycling Yard Location"
+                  title="Vee Yen Traders Industrial Scrap Recycling Yard Location Map"
                   src="https://www.google.com/maps?q=22.991840379016224,72.58082730429736&z=17&output=embed"
                   className="w-full h-[calc(100%-48px)] border-0"
                   loading="lazy"
