@@ -2,15 +2,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaPhoneAlt,
-  FaClock,
-  FaEnvelope,
-  FaLinkedinIn,
-  FaPinterestP,
-  FaFacebookF,
-  FaTwitter,
-} from "react-icons/fa";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,7 +34,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-4">
               <img
                 src="/images/logo1.png"
-                alt="Logo"
+                alt="Vee Yen Traders Logo"
                 className={`object-contain transition-all duration-300 ${
                   /* Increased width values here */
                   scrolled ? "w-[40px] md:w-[50px]" : "w-[55px] md:w-[75px]"
