@@ -65,7 +65,7 @@ export async function POST(req) {
         </div>
 
         <div style="background:#f4f4f4;padding:15px;text-align:center;font-size:12px;color:#777">
-          Vee Yen Traders — Industrial Scrap & Metal Recycling, Ahmedabad, Gujarat
+          Vee Yen Traders — Industrial Scrap & Metal Recycling, Madurai, Tamil Nadu, 625402
         </div>
 
       </div>

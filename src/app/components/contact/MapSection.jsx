@@ -129,7 +129,7 @@ export default function MapSection() {
             className="text-gray-600 leading-relaxed text-sm sm:text-base max-w-2xl"
           >
             Send us a message and our team will get back to you promptly. We're
-            conveniently located in the industrial area of Ahmedabad.
+            conveniently located in the industrial area of Tamil Nadu.
           </motion.p>
 
           <motion.div

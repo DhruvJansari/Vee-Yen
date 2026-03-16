@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Vee Yen Traders | Scrap Metal Dealers in Ahmedabad | Metal Recycling Company",
+      "Vee Yen Traders | Scrap Metal Dealers | Metal Recycling Company",
     template: "%s | Vee Yen Traders",
   },
 
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Vee Yen Traders | Scrap Metal Dealers in Ahmedabad",
+      "Vee Yen Traders | Scrap Metal Dealers",
     description:
-      "Trusted scrap metal trading and recycling company in Ahmedabad providing industrial scrap collection and sustainable recycling solutions.",
+      "Trusted scrap metal trading and recycling company providing industrial scrap collection and sustainable recycling solutions.",
     url: "/",
     siteName: "Vee Yen Traders",
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt:
-          "Vee Yen Traders - Scrap Metal Recycling Company in Ahmedabad",
+          "Vee Yen Traders - Scrap Metal Recycling Company",
       },
     ],
     locale: "en_IN",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Vee Yen Traders | Scrap Metal Dealers in Ahmedabad",
+      "Vee Yen Traders | Scrap Metal Dealers",
     description:
-      "Leading scrap metal trading and recycling company in Ahmedabad offering industrial scrap collection and sustainable waste solutions.",
+      "Leading scrap metal trading and recycling company offering industrial scrap collection and sustainable waste solutions.",
     images: ["/og-image.jpg"],
   },
 
@@ -84,13 +84,13 @@ export default function RootLayout({
               image: `${baseUrl}/og-image.jpg`,
               "@id": baseUrl,
               url: baseUrl,
-              telephone: "+91 9876543210",
+              telephone: "+91 9940832794",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Plot No. 21, Industrial Area",
-                addressLocality: "Ahmedabad",
-                addressRegion: "Gujarat",
-                postalCode: "380001",
+                streetAddress: "GROUND FLOOR, PLOT No 72, Oormechikulam, ABI GARDEN",
+                addressLocality: "Paravai, Madurai",
+                addressRegion: "Tamil Nadu",
+                postalCode: "625402",
                 addressCountry: "IN",
               },
               areaServed: "India",
