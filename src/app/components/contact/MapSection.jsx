@@ -355,7 +355,7 @@ export default function MapSection() {
                   <div className="flex items-center gap-2">
                     <FaMapMarkerAlt className="text-white text-lg" />
                     <p className="text-white font-bold text-sm">
-                      Ahmedabad, Gujarat
+                      Paravai, Madurai, Tamil Nadu
                     </p>
                   </div>
                   <a

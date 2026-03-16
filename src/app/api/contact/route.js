@@ -22,7 +22,7 @@ export async function POST(req) {
 
         <div style="background:#ff5e14;padding:20px;color:white;text-align:center">
           <h2 style="margin:0;letter-spacing:1px">New Enquiry — Vee Yen Traders</h2>
-          <p style="margin:6px 0 0;font-size:13px;opacity:0.9">Industrial Scrap & Metal Recycling, Ahmedabad</p>
+          <p style="margin:6px 0 0;font-size:13px;opacity:0.9">Industrial Scrap & Metal Recycling.</p>
         </div>
 
         <div style="padding:30px">
