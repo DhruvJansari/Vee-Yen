@@ -8,25 +8,25 @@ const cards = [
     icon: Phone,
     title: "Scrap Sales & Collection",
     line1: "Phone / WhatsApp",
-    line2: "sales@veeyentraders.com",
+    line2: "+91 9940832794",
   },
   {
     icon: Mail,
     title: "Bulk Purchase",
     line1: "Industrial & bulk sourcing",
-    line2: "purchase@veeyentraders.com",
+    line2: "veeyantraders11@gmail.com",
   },
   {
     icon: Mail,
     title: "Operations & Logistics",
     line1: "Pickup & scheduling support",
-    line2: "operations@veeyentraders.com",
+    line2: "veeyantraders11@gmail.com",
   },
   {
     icon: MapPin,
     title: "Address",
-    line1: "VEE YEN Traders Recycling Yard",
-    line2: "Complete Address Here",
+    line1: "GROUND FLOOR, PLOT No 72, Oormechikulam, ABI GARDEN,",
+    line2: "Paravai, Madurai, Tamil Nadu, 625402",
   },
 ];
 

@@ -71,7 +71,7 @@ export default function CallToAction() {
               </motion.a>
 
               <motion.a
-                href="tel:+91 98765 43210"
+                href="tel:+91 99408 32794"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="border-2 border-white text-white px-8 py-4 text-xs font-black uppercase tracking-widest hover:bg-white hover:text-[#ff5e14] transition-all duration-300 flex items-center justify-center gap-3 whitespace-nowrap"

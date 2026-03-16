@@ -1,19 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FaPhone,
-  FaWhatsapp,
-  FaEnvelope,
-  FaClock,
   FaMapMarkerAlt,
   FaRecycle,
   FaIndustry,
   FaTruck,
   FaFileAlt,
+  FaUser,
+  FaEnvelope,
+  FaPhone,
+  FaTag,
+  FaCommentDots,
+  FaPaperPlane,
 } from "react-icons/fa";
 
 export default function MapSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    type: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
   const services = [
     { icon: FaTruck, text: "Industrial Scrap Collection" },
     { icon: FaRecycle, text: "Metal Recycling" },
@@ -22,44 +34,42 @@ export default function MapSection() {
     { icon: FaFileAlt, text: "Compliance & Documentation" },
   ];
 
-  const contactInfo = [
-    {
-      icon: FaMapMarkerAlt,
-      label: "Our Recycling Yard",
-      value: "Plot No. 21, Industrial Area,\nAhmedabad, Gujarat, India",
-      link: "https://maps.app.goo.gl/NRNMXh7omSqCm3aSA",
-      external: true,
-      color: "text-[#ff5e14]",
-    },
-    {
-      icon: FaPhone,
-      label: "Call Us",
-      value: "+91 98765 43210",
-      link: "tel:+919876543210",
-      color: "text-gray-700",
-    },
-    {
-      icon: FaEnvelope,
-      label: "Email Us",
-      value: "contact@veeyentraders.com",
-      link: "mailto:contact@veeyentraders.com",
-      color: "text-gray-700",
-    },
-    {
-      icon: FaWhatsapp,
-      label: "WhatsApp",
-      value: "+91 98765 43210",
-      link: "https://wa.me/919876543210",
-      external: true,
-      color: "text-gray-700",
-    },
-    {
-      icon: FaClock,
-      label: "Working Hours",
-      value: "Monday - Saturday: 9:00 AM - 6:00 PM | Sunday: Closed",
-      color: "text-gray-600",
-    },
+  const enquiryTypes = [
+    "Scrap Collection",
+    "Metal Recycling",
+    "Bulk Supply",
+    "Material Processing",
+    "Compliance & Documentation",
+    "General Enquiry",
   ];
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", type: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputBase =
+    "w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 pl-10 focus:outline-none focus:border-[#ff5e14] focus:bg-white transition-all duration-200 placeholder:text-gray-400";
 
   return (
     <section className="bg-gray-100 py-16 sm:py-20 lg:py-24 overflow-hidden">
@@ -87,7 +97,7 @@ export default function MapSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-[#ff5e14] uppercase text-xs sm:text-sm font-bold tracking-wider"
             >
-              Visit Us
+              Get In Touch
             </motion.p>
           </div>
 
@@ -98,7 +108,7 @@ export default function MapSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-700 mb-4 leading-tight"
           >
-            Our{" "}
+            Contact Our{" "}
             <span className="text-[#ff5e14] relative inline-block">
               Recycling Yard
               <motion.span
@@ -118,11 +128,10 @@ export default function MapSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-gray-600 leading-relaxed text-sm sm:text-base max-w-2xl"
           >
-            Visit our recycling yard or navigate easily using the map below.
-            We're conveniently located in the industrial area for easy access.
+            Send us a message and our team will get back to you promptly. We're
+            conveniently located in the industrial area of Ahmedabad.
           </motion.p>
 
-          {/* Decorative underline */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -160,53 +169,175 @@ export default function MapSection() {
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* Contact Information */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="space-y-4"
           >
-            {contactInfo.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ x: 5 }}
-                className="bg-white  p-5 sm:p-6 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-[#ff5e14]"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12  bg-gradient-to-br from-[#ff5e14] to-orange-500 flex items-center justify-center flex-shrink-0 shadow-md">
-                    <item.icon className="text-white text-xl" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs sm:text-sm font-semibold text-gray-500 mb-1 uppercase tracking-wide">
-                      {item.label}
-                    </p>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        aria-label={`Contact via ${item.label}`}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
-                        className={`${item.color} font-bold text-sm sm:text-base hover:underline block break-words transition-colors duration-300 hover:text-[#ff5e14]`}
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p
-                        className={`${item.color} font-bold text-sm sm:text-base whitespace-pre-line leading-relaxed`}
-                      >
-                        {item.value}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <div className="bg-white shadow-xl border border-gray-100 p-6 sm:p-8">
+              {/* Form Header */}
+              <div className="border-l-4 border-[#ff5e14] pl-4 mb-6">
+                <h3 className="text-lg font-extrabold text-gray-800">
+                  Send an Enquiry
+                </h3>
+                <p className="text-xs text-gray-500 mt-1">
+                  Fill in the details below and we'll respond within 24 hours.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="relative"
+                >
+                  <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ff5e14] text-xs" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your Full Name"
+                    className={inputBase}
+                  />
+                </motion.div>
+
+                {/* Email */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 }}
+                  className="relative"
+                >
+                  <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ff5e14] text-xs" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Email Address"
+                    className={inputBase}
+                  />
+                </motion.div>
+
+                {/* Phone */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="relative"
+                >
+                  <FaPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ff5e14] text-xs" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="Phone Number"
+                    className={inputBase}
+                  />
+                </motion.div>
+
+                {/* Enquiry Type */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.25 }}
+                  className="relative"
+                >
+                  <FaTag className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ff5e14] text-xs" />
+                  <select
+                    name="type"
+                    value={formData.type}
+                    onChange={handleChange}
+                    required
+                    className={`${inputBase} appearance-none cursor-pointer`}
+                  >
+                    <option value="" disabled>
+                      Select Enquiry Type
+                    </option>
+                    {enquiryTypes.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </motion.div>
+
+                {/* Message */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="relative"
+                >
+                  <FaCommentDots className="absolute left-3 top-4 text-[#ff5e14] text-xs" />
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    placeholder="Describe your requirement..."
+                    className={`${inputBase} pl-10 resize-none`}
+                  />
+                </motion.div>
+
+                {/* Submit */}
+                <motion.button
+                  type="submit"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-[#ff5e14] to-orange-500 text-white font-bold py-3 px-6 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === "loading" ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="text-sm" />
+                      Send Enquiry
+                    </>
+                  )}
+                </motion.button>
+
+                {/* Feedback Messages */}
+                {status === "success" && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center text-sm font-semibold text-green-600 bg-green-50 border border-green-200 py-3 px-4"
+                  >
+                    ✅ Your enquiry has been sent! We'll be in touch soon.
+                  </motion.p>
+                )}
+                {status === "error" && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center text-sm font-semibold text-red-600 bg-red-50 border border-red-200 py-3 px-4"
+                  >
+                    ❌ Something went wrong. Please try again or call us
+                    directly.
+                  </motion.p>
+                )}
+              </form>
+            </div>
           </motion.div>
 
           {/* Map Container */}
@@ -228,7 +359,7 @@ export default function MapSection() {
                     </p>
                   </div>
                   <a
-                    href="https://maps.app.goo.gl/NRNMXh7omSqCm3aSA"
+                    href="https://www.google.com/maps?q=9.9811104,78.0412441&z=17&hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white text-xs underline hover:text-gray-100 transition-colors"
@@ -240,7 +371,7 @@ export default function MapSection() {
                 {/* Map Iframe */}
                 <iframe
                   title="Vee Yen Traders Industrial Scrap Recycling Yard Location Map"
-                  src="https://www.google.com/maps?q=22.991840379016224,72.58082730429736&z=17&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d366.95050217732415!2d78.04125109641807!3d9.980995326177148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwNTgnNTIuMCJOIDc4wrAwMicyOC41IkU!5e1!3m2!1sen!2sin!4v1773651447281!5m2!1sen!2sin"
                   className="w-full h-[calc(100%-48px)] border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -258,7 +389,7 @@ export default function MapSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 text-center"
-        ></motion.div>
+        />
       </div>
     </section>
   );

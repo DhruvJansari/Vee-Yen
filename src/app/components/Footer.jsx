@@ -97,9 +97,9 @@ export default function Footer() {
                 <div>
                   <p className="text-white font-medium">Address</p>
                   <p>
-                    Plot No. 21, Industrial Area,
+                    GROUND FLOOR, PLOT No 72, Oormechikulam, ABI GARDEN,
                     <br />
-                    Ahmedabad, Gujarat, India
+                    Paravai, Madurai, Tamil Nadu, 625402
                   </p>
                 </div>
               </div>
@@ -111,10 +111,10 @@ export default function Footer() {
                 <div>
                   <p className="text-white font-medium">Phone</p>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+99408 32794"
                     className="hover:text-[#ff5e14] transition"
                   >
-                    +91 9876543210
+                    +91 99408 32794
                   </a>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function Footer() {
                     href="mailto:contact@veeyentraders.com?subject=Scrap Inquiry&body=Hello Vee Yen Traders,"
                     className="hover:text-[#ff5e14] transition"
                   >
-                    contact@veeyentraders.com
+                    veeyantraders11@gmail.com
                   </a>
                 </div>
               </div>
@@ -150,13 +150,6 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} VEE YEN Traders. All Rights Reserved.
           </p>
-
-          <div className="flex justify-center md:justify-start gap-6">
-            <span className="hover:text-[#ff5e14] cursor-pointer">
-              Privacy Policy
-            </span>
-            <span className="hover:text-[#ff5e14] cursor-pointer">FAQ’s</span>
-          </div>
         </div>
       </div>
     </footer>
